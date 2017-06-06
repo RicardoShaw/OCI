@@ -10,12 +10,14 @@
 package com.oci.service;
 
 import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.oci.dao.MaterialDAO;
 import com.oci.dao.MaterialTypeDAO;
 import com.oci.domain.MaterialType;
 import com.oci.domain.searcher.MaterialTypeSearcher;
@@ -36,6 +38,9 @@ public class MaterialTypeServiceImpl implements MaterialTypeService {
 	@Resource
 	@Autowired
 	private MaterialTypeDAO materialTypeDAO;
+	@Resource
+	@Autowired
+	private MaterialDAO materialDAO;
 	
 	
 	public void setMaterialTypeDAO(MaterialTypeDAO materialTypeDAO) {
@@ -113,6 +118,7 @@ public class MaterialTypeServiceImpl implements MaterialTypeService {
 	@Override
 	public void deleteMaterialTypes(List<Integer> typeIds) {
 		// TODO Auto-generated method stub
+		materialDAO.deleteMaterialsByMaterialTypeId(typeIds);
 		materialTypeDAO.deleteMaterialTypes(typeIds);
 	}
 
@@ -125,6 +131,7 @@ public class MaterialTypeServiceImpl implements MaterialTypeService {
 	@Override
 	public void deleteMaterialType(Integer typeId) {
 		// TODO Auto-generated method stub
+		materialDAO.deleteMaterialByMaterialTypeId(typeId);
 		materialTypeDAO.deleteMaterialType(typeId);
 	}
 

@@ -75,37 +75,8 @@ public class ProjectAndTypeHandler {
 		return "redirect:/projectAndType/find";
 		
 	}
-	
-	
-//	@PreAuthorize("hasRole('project_type_add')")
-//	@RequestMapping(value="/adds",method=RequestMethod.GET)
-//	public ModelAndView adds(){
-//		return new ModelAndView("/projectAndType/addsProjectAndType","projectAndTypeAdd",new ProjectAndTypeAdd());
-//	}
-//
-//	
-//	@PreAuthorize("hasRole('project_type_add')")
-//	@RequestMapping(value="/adds",method=RequestMethod.POST)
-//	public String addsProjectAndType(@ModelAttribute("projectAndTypeAdd")@Valid ProjectAndTypeAdd projectAndType,BindingResult result,Model model){
-//		if(result.hasErrors()){
-//			return "/projectAndType/addsProjectAndType";
-//		}
-//		List<Integer> roleIds = projectAndType.getRoleIds();
-//		Integer groupId = projectAndType.getGroupId();
-//		ProjectAndType rg=new ProjectAndType();
-//		for(Integer roleId:roleIds){
-//			rg.setRoleId(roleId);
-//			rg.setGroupId(groupId);
-//			projectAndTypeService.insertProjectAndType(rg);
-//		}	
-//		System.out.println(projectAndType);
-//		return "redirect:/projectAndType/find";
-//		
-//	}
-	
-	
-	
-	
+
+
 	@PreAuthorize("hasRole('project_type_find')")
 	@RequestMapping(value="/find",method=RequestMethod.GET)
 	public ModelAndView findProjectAndTypes(){

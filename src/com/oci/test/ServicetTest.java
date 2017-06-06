@@ -12,6 +12,7 @@ package com.oci.test;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.runner.RunWith;
@@ -21,16 +22,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.oci.dao.MaterialTypeDAO;
 import com.oci.dao.RodAndMaterialDAO;
-import com.oci.domain.searcher.RoleAndGroupSearcher;
-import com.oci.domain.vo.RodVo;
-import com.oci.domain.vo.RoleAndGroupVo;
-import com.oci.domain.vo.RoleVo;
-import com.oci.domain.vo.UserForOtherVo;
+import com.oci.mapper.IntervalMapper;
 import com.oci.mapper.RodMapper;
 import com.oci.mapper.RoleAndGroupMapper;
 import com.oci.mapper.RoleMapper;
 import com.oci.mapper.UserMapper;
 import com.oci.service.GroupService;
+import com.oci.service.MaterialService;
+import com.oci.service.MaterialTypeService;
 import com.oci.service.ProjectAndTypeService;
 import com.oci.service.ProjectService;
 import com.oci.service.ProjectTypeService;
@@ -81,6 +80,17 @@ public class ServicetTest {
 	
 	@Autowired
 	private RodMapper rodMapper;
+	
+	@Autowired
+	private IntervalMapper intervalMapper;
+	
+	
+	@Autowired
+	private MaterialService materialService;
+	
+	@Autowired
+	private MaterialTypeService materialTypeService;
+	
 	
 	
 	@org.junit.Test
@@ -207,10 +217,51 @@ public class ServicetTest {
 //				System.out.println(rg);
 //			}
 		
-		List<RodVo> rodVos = rodMapper.findAllRodVo();
-		for(RodVo rodVo:rodVos){
-			System.out.println(rodVo);
-		}
+//		List<RodVo> rodVos = rodMapper.findAllRodVo();
+//		for(RodVo rodVo:rodVos){
+//			System.out.println(rodVo);
+//		}
+//		
+//		
+//		List<IntervalVo> intervalVos = intervalMapper.findAllIntervalVo();
+//		for(IntervalVo interval:intervalVos){
+//			System.out.println(interval);
+//		}
+//		
+//		List<IntervalForOtherVo> intervalVos1 = intervalMapper.findAllIntervalForOtherVo();
+//		for(IntervalForOtherVo interval:intervalVos1){
+//			System.out.println(interval);
+//		}
+//		
+		
+		
+//		List<MaterialVo> materialVos = materialService.findAllMaterialVo();
+//		for(MaterialVo materialVo : materialVos){
+//			System.out.println(materialVo);
+//		}
+		
+//		MaterialSearcher material = new MaterialSearcher();
+//		material.setMaterialName("钢");
+//		List<MaterialVo> materialVos = materialService.findMaterialVos(material);
+//		for(MaterialVo materialVo:materialVos){
+//			System.out.println(materialVo);
+//		}
+//		Material material = new Material();
+//		material.setMaterialName("主材钢筋1");
+//		material.setMaterialTypeId(11);
+//		materialService.insertMaterial(material);
+//		Material material1 = new Material();
+//		material1.setMaterialName("主材钢筋4");
+//		material1.setMaterialTypeId(11);
+//		materialService.insertMaterial(material1);
+//		materialService.deleteMaterial(11);
+		
+//		materialTypeService.deleteMaterialType(12);
+//		List<Integer> ids = new ArrayList<Integer>();
+//		ids.add(11);
+//		ids.add(14);
+//		materialTypeService.deleteMaterialTypes(ids);
+//		
 		
 	}
 	

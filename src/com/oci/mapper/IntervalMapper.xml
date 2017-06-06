@@ -30,8 +30,8 @@
 		select * from t_interval i,t_project p where i.project_id = p.project_id
 	</select>
 	
-	<select id="findAllIntervalForOtherVo" resultMap="intervalVoResult">
-		select * from interval i
+	<select id="findAllIntervalForOtherVo" resultMap="intervalForOtherVoResult">
+		select * from t_interval 
 	</select>
 	
 	
@@ -81,7 +81,7 @@
 		update t_interval
 		<set>
 			<if test="intervalName!=null">
-				interval_name like #{intervalName},
+				interval_name = #{intervalName},
 			</if>
 			<if test="projectId != null">
 				project_id = #{projectId},

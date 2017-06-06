@@ -38,33 +38,26 @@
 		select * from t_material
 	</select>
 	
-	<select id="findMaterialVos" parameterType="hashmap" resultMap="materialVoResult">
-		select * from t_material
+	<select id="findMaterialVos" parameterType="MaterialSearcher" resultMap="materialVoResult">
+		select * from t_material m,t_materialtype mt 
 		<where>
 			<if test="materialName != null">
-				 material_name like#{materialName}
+				 m.material_name like '%${materialName}%'
 			</if>
-			<if test="materialMake != null">
-				and material_make like#{materialMake}
+			<if test="materialTypeName != null">
+				and  mt.type_name like '%${materialTypeName}%'
 			</if>
-			<if test="materialUnit != null">
-				and  material_unit like#{materialUnit}
-			</if>
-			<if test="materialTypeId != null">
-				and  materialtype_id =#{materialTypeId}
-			</if>
-			<if test="materialModel != null">
-				and  material_model like#{materialModel}
-			</if>
+
 			<if test="reserve1 != null">
-				and reserve1 like#{reserve1}
+				and m.reserve1 like#{reserve1}
 			</if>
 			<if test="reserve2 != null">
-				and reserve2 like#{reserve2}
+				and m.reserve2 like#{reserve2}
 			</if>
 			<if test="reserve3 != null">
-				and reserve3 like#{reserve3}
+				and m.reserve3 like#{reserve3}
 			</if>
+			and m.materialtype_id = mt.type_id
 		</where>
 	</select>
 	
@@ -86,22 +79,22 @@
 		update t_material
 		<set>
 			<if test="materialName != null">
-				 material_name =#{materialName}
+				 material_name =#{materialName},
 			</if>
 			<if test="materialMake != null">
-				 material_make =#{materialMake}
+				 material_make =#{materialMake},
 			</if>
 			<if test="materialUnit != null">
-				 material_unit =#{materialUnit}
+				 material_unit =#{materialUnit},
 			</if>
 			<if test="materialTypeId != null">
-				 materialtype_id =#{materialTypeId}
+				 materialtype_id =#{materialTypeId},
 			</if>
 			<if test="reserve1 != null">
-				reserve1 = #{reserve1}
+				reserve1 = #{reserve1},
 			</if>
 			<if test="reserve2 != null">
-				reserve2 = #{reserve2}
+				reserve2 = #{reserve2},
 			</if>
 			<if test="reserve3 != null">
 				reserve3 = #{reserve3}
@@ -128,6 +121,21 @@
 	
 	<delete id="deleteMaterial" parameterType="int">
 		delete from t_material where material_id=#{materialId}
+	</delete>
+	
+	
+	<delete id="deleteMaterialsByMaterialTypeId" parameterType="list">
+		delete  from t_material
+		<where>
+			materialtype_id in
+			<foreach item="materialTypeId" collection="list" open="(" separator="," close=")">
+				#{materialTypeId}
+			</foreach>
+		</where>
+	</delete>
+	
+	<delete id="deleteMaterialByMaterialTypeId" parameterType="int">
+		delete from t_material where materialtype_id=#{materialTypeId}
 	</delete>
 
 

@@ -20,6 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.oci.dao.MaterialDAO;
 import com.oci.domain.Material;
+import com.oci.domain.searcher.MaterialSearcher;
+import com.oci.domain.vo.MaterialForOtherVo;
 import com.oci.domain.vo.MaterialVo;
 
 /** 
@@ -53,20 +55,7 @@ public class MaterialServiceImpl implements MaterialService {
 		// TODO Auto-generated method stub
 		return materialDAO.findAllMaterialVo();
 	}
-
-	/* (非 Javadoc) 
-	 * <p>Title: findMaterialVos</p> 
-	 * <p>Description: </p> 
-	 * @param map
-	 * @return 
-	 * @see com.oci.service.MaterialService#findMaterialVos(java.util.Map) 
-	 */
-	@Override
-	public List<MaterialVo> findMaterialVos(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return materialDAO.findMaterialVos(map);
-	}
-
+	
 	/* (非 Javadoc) 
 	 * <p>Title: findMaterial</p> 
 	 * <p>Description: </p> 
@@ -139,6 +128,32 @@ public class MaterialServiceImpl implements MaterialService {
 	public void deleteMaterial(Integer materialId) {
 		// TODO Auto-generated method stub
 		materialDAO.deleteMaterial(materialId);
+	}
+
+	/* (非 Javadoc) 
+	 * <p>Title: findMaterialVos</p> 
+	 * <p>Description: </p> 
+	 * @param material
+	 * @return 
+	 * @see com.oci.service.MaterialService#findMaterialVos(com.oci.domain.searcher.MaterialSearcher) 
+	*/
+	@Override
+	public List<MaterialVo> findMaterialVos(MaterialSearcher material) {
+		// TODO Auto-generated method stub
+		return materialDAO.findMaterialVos(material);
+	}
+
+	/* (非 Javadoc) 
+	 * <p>Title: findMaterialForOtherVo</p> 
+	 * <p>Description: </p> 
+	 * @param materialId
+	 * @return 
+	 * @see com.oci.service.MaterialService#findMaterialForOtherVo(java.lang.Integer) 
+	*/
+	@Override
+	public MaterialForOtherVo findMaterialForOtherVo(Integer materialId) {
+		// TODO Auto-generated method stub
+		return materialDAO.findMaterialForOtherVo(materialId);
 	}
 
 }

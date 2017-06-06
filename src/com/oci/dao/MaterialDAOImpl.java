@@ -10,12 +10,13 @@
 package com.oci.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.oci.domain.Material;
+import com.oci.domain.searcher.MaterialSearcher;
+import com.oci.domain.vo.MaterialForOtherVo;
 import com.oci.domain.vo.MaterialVo;
 import com.oci.mapper.MaterialMapper;
 
@@ -46,19 +47,6 @@ public class MaterialDAOImpl implements MaterialDAO {
 	public List<MaterialVo> findAllMaterialVo() {
 		// TODO Auto-generated method stub
 		return materialMapper.findAllMaterialVo();
-	}
-
-	/* (非 Javadoc) 
-	 * <p>Title: findMaterialVos</p> 
-	 * <p>Description: </p> 
-	 * @param map
-	 * @return 
-	 * @see com.oci.dao.MaterialDAO#findMaterialVos(java.util.Map) 
-	*/
-	@Override
-	public List<MaterialVo> findMaterialVos(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return materialMapper.findMaterialVos(map);
 	}
 
 	/* (非 Javadoc) 
@@ -133,6 +121,56 @@ public class MaterialDAOImpl implements MaterialDAO {
 	public void deleteMaterial(Integer materialId) {
 		// TODO Auto-generated method stub
 		materialMapper.deleteMaterial(materialId);
+	}
+
+	/* (非 Javadoc) 
+	 * <p>Title: findMaterialVos</p> 
+	 * <p>Description: </p> 
+	 * @param material
+	 * @return 
+	 * @see com.oci.dao.MaterialDAO#findMaterialVos(com.oci.domain.searcher.MaterialSearcher) 
+	*/
+	@Override
+	public List<MaterialVo> findMaterialVos(MaterialSearcher material) {
+		// TODO Auto-generated method stub
+		return materialMapper.findMaterialVos(material);
+	}
+
+	/* (非 Javadoc) 
+	 * <p>Title: findMaterialForOtherVo</p> 
+	 * <p>Description: </p> 
+	 * @param materialId
+	 * @return 
+	 * @see com.oci.dao.MaterialDAO#findMaterialForOtherVo(java.lang.Integer) 
+	*/
+	@Override
+	public MaterialForOtherVo findMaterialForOtherVo(Integer materialId) {
+		// TODO Auto-generated method stub
+		return materialMapper.findMaterialForOtherVo(materialId);
+	}
+
+	/* (非 Javadoc) 
+	 * <p>Title: deleteMaterialByMaterialTypeId</p> 
+	 * <p>Description: </p> 
+	 * @param materialTypeId 
+	 * @see com.oci.dao.MaterialDAO#deleteMaterialByMaterialTypeId(java.lang.Integer) 
+	*/
+	@Override
+	public void deleteMaterialByMaterialTypeId(Integer materialTypeId) {
+		// TODO Auto-generated method stub
+		materialMapper.deleteMaterialByMaterialTypeId(materialTypeId);
+	}
+
+	/* (非 Javadoc) 
+	 * <p>Title: deleteMaterialByMaterialsTypeId</p> 
+	 * <p>Description: </p> 
+	 * @param materialTypeIds 
+	 * @see com.oci.dao.MaterialDAO#deleteMaterialByMaterialsTypeId(java.util.List) 
+	*/
+	@Override
+	public void deleteMaterialsByMaterialTypeId(List<Integer> materialTypeIds) {
+		// TODO Auto-generated method stub
+		materialMapper.deleteMaterialsByMaterialTypeId(materialTypeIds);
 	}
 	
 	

@@ -10,9 +10,9 @@
 package com.oci.mapper;
 
 import java.util.List;
-import java.util.Map;
 
 import com.oci.domain.Material;
+import com.oci.domain.searcher.MaterialSearcher;
 import com.oci.domain.vo.MaterialForOtherVo;
 import com.oci.domain.vo.MaterialVo;
 
@@ -26,7 +26,7 @@ import com.oci.domain.vo.MaterialVo;
  */
 public interface MaterialMapper {
 	public List<MaterialVo> findAllMaterialVo();
-	public List<MaterialVo> findMaterialVos(Map<String,Object> map);
+	public List<MaterialVo> findMaterialVos(MaterialSearcher material);
 	public Material findMaterial(Integer materialId);
 	public MaterialVo findMaterialVo(Integer materialId);
 	public MaterialForOtherVo findMaterialForOtherVo(Integer materialId);
@@ -34,5 +34,7 @@ public interface MaterialMapper {
 	public void insertMaterial(Material material);
 	public void deleteMaterials(List<Integer> materialIds);
 	public void deleteMaterial(Integer materialId);
+	public void deleteMaterialByMaterialTypeId(Integer materialTypeId);
+	public void deleteMaterialsByMaterialTypeId(List<Integer> materialTypeIds);
 
 }
