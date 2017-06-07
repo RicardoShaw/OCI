@@ -10,9 +10,9 @@
 package com.oci.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import com.oci.domain.RodAndMaterial;
+import com.oci.domain.searcher.RodAndMaterialSearcher;
 import com.oci.domain.vo.RodAndMaterialVo;
 
 /** 
@@ -25,7 +25,7 @@ import com.oci.domain.vo.RodAndMaterialVo;
  */
 public interface RodAndMaterialDAO {
 	public List<RodAndMaterialVo> findAllRodAndMaterialVo();
-	public List<RodAndMaterialVo> findRodAndMaterialVos(Map<String,Object> map);
+	public List<RodAndMaterialVo> findRodAndMaterialVos(RodAndMaterialSearcher rodAndMaterial);
 	public RodAndMaterial findRodAndMaterial(Integer rodMaterialId);
 	public RodAndMaterialVo findRodAndMaterialVo(Integer rodMaterialId);
 	
@@ -33,4 +33,11 @@ public interface RodAndMaterialDAO {
 	public void insertRodAndMaterial(RodAndMaterial rodAndMaterial);
 	public void deleteRodAndMaterials(List<Integer> rodMaterialIds);
 	public void deleteRodAndMaterial(Integer rodMaterialId);
+	
+	
+	public void deleteRodAndMaterialsByRodId(List<Integer> rodIds);
+	public void deleteRodAndMaterialByRodId(Integer rodId);
+	
+	public void deleteRodAndMaterialsByMaterial(List<Integer> materialIds);
+	public void deleteRodAndMaterialByMaterial(Integer materialId);
 }

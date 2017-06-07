@@ -26,36 +26,34 @@
 		select * from t_rod_material
 	</select>
 	
-	<select id="findRodAndMaterialVos" parameterType="hashmap" resultMap="rodAndMaterialVoResult">
-		select * from t_rod_material
-		<where>
-			<if test="rodId != null">
-				 rod_id = #{rodId}
+	<select id="findRodAndMaterialVos" parameterType="RodAndMaterialSearcher" resultMap="rodAndMaterialVoResult">
+		select * from t_rod_material rm,t_rod r , t_material m
+		<trim>
+			<if test="rodName != null">
+				r.rod_no like '%${rodName}%'
 			</if>
-			<if test="materialId != null">
-				and material_id =#{materialId}
-			</if>
-			<if test="materialNum != null">
-				and  material_num =#{materialNum}
+			<if test="materialName != null">
+				and m.material_name like '%{materialName}%'
 			</if>
 			<if test="reserve1 != null">
-				and reserve1 like#{reserve1}
+				and rm.reserve1 like '%{reserve1}%'
 			</if>
 			<if test="reserve2 != null">
-				and reserve2 like#{reserve2}
+				and rm.reserve2 like '%{reserve2}%'
 			</if>
 			<if test="reserve3 != null">
-				and reserve3 like#{reserve3}
+				and rm.reserve3 like '%{reserve3}%'
 			</if>
-		</where>
+				and rm.rod_id = r.rod_id and rm.material_id = m.material_id	
+		</trim>
 	</select>
 	
 	<select id="findRodAndMaterial" parameterType="int" resultMap="rodAndMaterialResult">
-		select * from t_rod_material where rod_material_id =#{rodMaterialId}
+		select * from t_rod_material where rod_material_id =#{rodAndMaterialId}
 	</select>
 	
 	<select id="findRodAndMaterialVo" parameterType="int" resultMap="rodAndMaterialVoResult">
-		select * from t_rod_material where rod_material_id =#{rodMaterialId}
+		select * from t_rod_material where rod_material_id =#{rodAndMaterialId}
 	</select>
 	
 	
@@ -64,20 +62,20 @@
 	<update id="updateRodAndMaterial"	parameterType="RodAndMaterial" >
 		update t_rod_material
 		<set>			
-		<if test="rodId != null">
-				 rod_id = #{rodId}
+			<if test="rodId != null">
+				 rod_id = #{rodId},
 			</if>
 			<if test="materialId != null">
-				and material_id =#{materialId}
+				and material_id =#{materialId},
 			</if>
 			<if test="materialNum != null">
-				and  material_num =#{materialNum}
+				and  material_num =#{materialNum},
 			</if>
 			<if test="reserve1 != null">
-				and reserve1 =#{reserve1}
+				and reserve1 =#{reserve1},
 			</if>
 			<if test="reserve2 != null">
-				and reserve2 =#{reserve2}
+				and reserve2 =#{reserve2},
 			</if>
 			<if test="reserve3 != null">
 				and reserve3 =#{reserve3}
@@ -87,12 +85,12 @@
 	</update>
 	
 	<!-- keyProperty="typeId" 这个projectId 需要是RodAndMaterialType类的属性 -->
-	<insert id="insertMaterial" parameterType="Material" useGeneratedKeys="true" keyProperty="materialId">
+	<insert id="insertRodAndMaterial" parameterType="Material" useGeneratedKeys="true" keyProperty="materialId">
 		insert ignore into t_rod_material(rod_id,material_id,material_num,reserve1,reserve2,reserve3) 
 		values(#{rodId},#{materialId},#{materialNum},#{reserve1},#{reserve2},#{reserve3})
 	</insert>
 	
-	<delete id="deleteMaterials" parameterType="list">
+	<delete id="deleteRodAndMaterials" parameterType="list">
 		delete  from t_rod_material
 		<where>
 			rod_material_id in
@@ -102,8 +100,42 @@
 		</where>
 	</delete>
 	
-	<delete id="deleteMaterial" parameterType="int">
+	<delete id="deleteRodAndMaterial" parameterType="int">
 		delete from t_rod_material where rod_material_id=#{rodMaterialId}
+	</delete>
+	
+	
+	
+	
+	
+	<delete id="deleteRodAndMaterialsByRodId" parameterType="list">
+		delete  from t_rod_material
+		<where>
+			rod_id in
+			<foreach item="rodId" collection="list" open="(" separator="," close=")">
+				#{rodId}
+			</foreach>
+		</where>
+	</delete>
+	
+	<delete id="deleteRodAndMaterialByRodId" parameterType="int">
+		delete from t_rod_material where rod_id=#{rodId}
+	</delete>
+	
+	
+	
+	<delete id="deleteRodAndMaterialsByMaterialId" parameterType="list">
+		delete  from t_rod_material
+		<where>
+			material_id in
+			<foreach item="materialId" collection="list" open="(" separator="," close=")">
+				#{materialId}
+			</foreach>
+		</where>
+	</delete>
+	
+	<delete id="deleteRodAndMaterialByMaterialId" parameterType="int">
+		delete from t_rod_material where material_id=#{materialId}
 	</delete>
 
 

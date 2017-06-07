@@ -10,9 +10,9 @@
 package com.oci.service;
 
 import java.util.List;
-import java.util.Map;
 
 import com.oci.domain.RodAndMaterial;
+import com.oci.domain.searcher.RodAndMaterialSearcher;
 import com.oci.domain.vo.RodAndMaterialVo;
 
 /** 
@@ -25,7 +25,7 @@ import com.oci.domain.vo.RodAndMaterialVo;
  */
 public interface RodAndMaterialService {
 	public List<RodAndMaterialVo> findAllRodAndMaterialVo();
-	public List<RodAndMaterialVo> findRodAndMaterialVos(Map<String,Object> map);
+	public List<RodAndMaterialVo> findRodAndMaterialVos(RodAndMaterialSearcher rodAndMaterial);
 	public RodAndMaterial findRodAndMaterial(Integer rodMaterialId);
 	public RodAndMaterialVo findRodAndMaterialVo(Integer rodMaterialId);
 	

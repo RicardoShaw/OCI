@@ -27,8 +27,10 @@ public class RodAndProgressVo implements Serializable {
 	*/ 
 	private static final long serialVersionUID = -5073551958119628964L;
 	private Integer rodAndProgressId;
-	private RodForOtherVo rod;
-	private ProgressForOtherVo progress;
+	private Integer rodId;
+	private String rodName;
+	private Integer progressId;
+	private String progressName;
 	private Date createDate;
 	public Integer getRodAndProgressId() {
 		return rodAndProgressId;
@@ -36,17 +38,32 @@ public class RodAndProgressVo implements Serializable {
 	public void setRodAndProgressId(Integer rodAndProgressId) {
 		this.rodAndProgressId = rodAndProgressId;
 	}
-	public RodForOtherVo getRod() {
-		return rod;
+	public Integer getRodId() {
+		return rodId;
 	}
-	public void setRod(RodForOtherVo rod) {
-		this.rod = rod;
+	public void setRodId(Integer rodId) {
+		this.rodId = rodId;
 	}
-	public ProgressForOtherVo getProgress() {
-		return progress;
+	public String getRodName() {
+		return rodName;
 	}
-	public void setProgress(ProgressForOtherVo progress) {
-		this.progress = progress;
+	public void setRodName(String rodName) {
+		this.rodName = rodName;
+	}
+	public Integer getProgressId() {
+		return progressId;
+	}
+	public void setProgressId(Integer progressId) {
+		this.progressId = progressId;
+	}
+	public String getProgressName() {
+		return progressName;
+	}
+	public void setProgressName(String progressName) {
+		this.progressName = progressName;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	public Date getCreateDate() {
 		return createDate;
@@ -54,15 +71,14 @@ public class RodAndProgressVo implements Serializable {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 	@Override
 	public String toString() {
 		return "RodAndProgressVo [rodAndProgressId=" + rodAndProgressId
-				+ ", rod=" + rod + ", progress=" + progress + ", createDate="
-				+ createDate + "]";
+				+ ", rodId=" + rodId + ", rodName=" + rodName + ", progressId="
+				+ progressId + ", progressName=" + progressName
+				+ ", createDate=" + createDate + "]";
 	}
+
 	
 	
 	

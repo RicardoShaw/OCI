@@ -11,38 +11,41 @@
 <resultMap type="RodAndProgressVo" id="rodAndProgressVoResult">
 		<id property="rodAndProgressId" column="rod_progress_id"/>
 		<result property="createDate" column="createdate"/>
-		<association property="rod" column="rod_id" select="com.oci.mapper.RodMapper.findRodForOtherVo"/>
-		<association property="progress" column="progress_id" select="com.oci.mapper.ProgressMapper.findProgressForOtherVo"/>
+		<result property="rodId" column="rod_id"/>
+		<result property="progressId" column="progress_id"/>
+		<result property="rodName" column="rod_no"/>
+		<result property="progressName" column="progress_name"/>
 </resultMap>
 
 	
 	
 	<select id="findAllRodAndProgressVo" resultMap="rodAndProgressVoResult">
-		select * from t_rod_progress 
+		select * from t_rod_progress  rg,t_rod r,t_progress p where
+		 rg.rod_id = r.rod_id and rg.progress_id = p.progress_id
 	</select>
 	
-	<select id="findRodAndProgressVos" parameterType="hashmap" resultMap="rodAndProgressVoResult">
-		select * from t_rod_progress
-		<where>
-			<if test="rodId != null">
-				 rod_id =#{rodId}
+	<select id="findRodAndProgressVos" parameterType="RodAndProgressSearcher" resultMap="rodAndProgressVoResult">
+		select * from t_rod_progress  rg,t_rod r,t_progress p where
+		<trim prefix="where" prefixOverrides="and | or" suffixOverrides=")">
+			<if test="rodName != null">
+				 r.rod_name like '%${rodName}%' 
 			</if>
-			<if test="progressId !=null">
-				progress_id = #{progressId}
+			<if test="progressName !=null">
+				and p.progress_name like '%${progressName}%' 
 			</if>
 			<if test="createDate !=null">
-				createdate = #{createDate}
+				and createdate = #{createDate} 
 			</if>
-
-		</where>
+			rg.rod_id = r.rod_id and rg.progress_id = p.progress_id
+		</trim>
 	</select>
 	
 	<select id="findRodAndProgress" parameterType="int" resultMap="rodAndProgressResult">
-		select * from t_rod_progress where rod_progress_id like#{rodAndProgressId}
+		select * from t_rod_progress where rod_progress_id = #{rodAndProgressId}
 	</select>
 	
 	<select id="findRodAndProgressVo" parameterType="int" resultMap="rodAndProgressVoResult">
-		select * from t_rod_progress where rod_progress_id like#{rodAndProgressId}
+		select * from t_rod_progress where rod_progress_id = #{rodAndProgressId}
 	</select>
 	
 
@@ -83,6 +86,35 @@
 	
 	<delete id="deleteRodAndProgress" parameterType="int">
 		delete from t_rod_progress where rod_progress_id=#{rodAndProgressId}
+	</delete>
+	
+	<delete id="deleteRodAndProgresssByRodId" parameterType="list">
+		delete  from t_rod_progress 
+		<where>
+			rod_id in
+			<foreach item="rodId" collection="list" open="(" separator="," close=")">
+				#{rodId}
+			</foreach>
+		</where>
+	</delete>
+	
+	<delete id="deleteRodAndProgressByRodId" parameterType="int">
+		delete from t_rod_progress where rod_id=#{rodId}
+	</delete>
+	
+	
+		<delete id="deleteRodAndProgresssByProgressId" parameterType="list">
+		delete  from t_rod_progress 
+		<where>
+			progress_id in
+			<foreach item="progressId" collection="list" open="(" separator="," close=")">
+				#{progressId}
+			</foreach>
+		</where>
+	</delete>
+	
+	<delete id="deleteRodAndProgressByProgressId" parameterType="int">
+		delete from t_rod_progress where progress_id=#{progressId}
 	</delete>
 
 

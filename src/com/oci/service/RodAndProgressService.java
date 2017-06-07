@@ -10,9 +10,9 @@
 package com.oci.service;
 
 import java.util.List;
-import java.util.Map;
 
 import com.oci.domain.RodAndProgress;
+import com.oci.domain.searcher.RodAndProgressSearcher;
 import com.oci.domain.vo.RodAndProgressVo;
 
 /** 
@@ -25,7 +25,7 @@ import com.oci.domain.vo.RodAndProgressVo;
  */
 public interface RodAndProgressService {
 	public List<RodAndProgressVo> findAllRodAndProgressVo();
-	public List<RodAndProgressVo> findRodAndProgresss(Map<String,Object> map);
+	public List<RodAndProgressVo> findRodAndProgressVos(RodAndProgressSearcher rodAndProgress);
 	public RodAndProgress findRodAndProgress(Integer rodAndProgressId);
 	public RodAndProgressVo findRodAndProgressVo(Integer rodAndProgressId);
 	

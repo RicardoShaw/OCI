@@ -26,16 +26,16 @@
 
 <resultMap type="RodForOtherVo" id="rodForOtherVoResult">
 		<id property="rodId" column="rod_id"/>
-		<result property="rodNo" column="rod_no"/>		
-		<result property="intervalId" column="interval_id"/>
-		<result property="intervalName" column="interval_name"/>
-		<result property="projectId" column="project_id"/>
-		<result property="projectName" column="project_name"/>
+		<result property="rodNo" column="rod_no"/>
 </resultMap>
 	
 	
 	<select id="findAllRodVo" resultMap="rodVoResult">
 		select * from t_rod r,t_interval i ,t_project p  where r.interval_id = i.interval_id and i.project_id = p.project_id
+	</select>
+	
+	<select id="findAllRodForOtherVo" resultMap="rodForOtherVoResult">
+		select * from t_rod
 	</select>
 	
 	<select id="findRodVos" parameterType="RodSearcher" resultMap="rodVoResult">
@@ -73,6 +73,10 @@
 	
 	<select id="findRodForOtherVo" parameterType="int" resultMap="rodForOtherVoResult">
 		select * from t_rod r,t_interval i ,t_project p where r.rod_id =#{rodId} and r.interval_id = i.interval_id and i.project_id = p.project_id
+	</select>
+	
+	<select id="findRodForOtherVoByIntervalId" parameterType="int" resultMap="rodForOtherVoResult">
+		select * from t_rod where interval_id =#{intervalId} 
 	</select>
 	
 

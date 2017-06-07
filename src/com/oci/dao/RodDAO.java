@@ -13,6 +13,7 @@ import java.util.List;
 
 import com.oci.domain.Rod;
 import com.oci.domain.searcher.RodSearcher;
+import com.oci.domain.vo.RodForOtherVo;
 import com.oci.domain.vo.RodVo;
 
 /** 
@@ -35,4 +36,6 @@ public interface RodDAO {
 	public void deleteRods(List<Integer> rodIds);
 	public void deleteRod(Integer rodId);
 	public void deleteRodsByIntervalId(Integer intervalId);
+
+	public List<RodForOtherVo> findAllRodForOtherVo();
 }

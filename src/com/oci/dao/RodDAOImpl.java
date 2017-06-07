@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import com.oci.domain.Rod;
 import com.oci.domain.searcher.RodSearcher;
+import com.oci.domain.vo.RodForOtherVo;
 import com.oci.domain.vo.RodVo;
 import com.oci.mapper.RodMapper;
 
@@ -150,6 +151,18 @@ public class RodDAOImpl implements RodDAO {
 	public List<RodVo> findRodVos(RodSearcher rod) {
 		// TODO Auto-generated method stub
 		return rodMapper.findRodVos(rod);
+	}
+
+	/* (非 Javadoc) 
+	 * <p>Title: findAllRodForOtherVo</p> 
+	 * <p>Description: </p> 
+	 * @return 
+	 * @see com.oci.dao.RodDAO#findAllRodForOtherVo() 
+	*/
+	@Override
+	public List<RodForOtherVo> findAllRodForOtherVo() {
+		// TODO Auto-generated method stub
+		return rodMapper.findAllRodForOtherVo();
 	}
 
 }

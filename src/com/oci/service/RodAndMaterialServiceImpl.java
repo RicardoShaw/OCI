@@ -10,7 +10,6 @@
 package com.oci.service;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -20,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.oci.dao.RodAndMaterialDAO;
 import com.oci.domain.RodAndMaterial;
+import com.oci.domain.searcher.RodAndMaterialSearcher;
 import com.oci.domain.vo.RodAndMaterialVo;
 
 /** 
@@ -63,9 +63,9 @@ public class RodAndMaterialServiceImpl implements RodAndMaterialService {
 	 * @see com.oci.service.RodAndMaterialService#findRodAndMaterialVos(java.util.Map) 
 	 */
 	@Override
-	public List<RodAndMaterialVo> findRodAndMaterialVos(Map<String, Object> map) {
+	public List<RodAndMaterialVo> findRodAndMaterialVos(RodAndMaterialSearcher rodAndMaterial) {
 		// TODO Auto-generated method stub
-		return rodAndMaterialDAO.findRodAndMaterialVos(map);
+		return rodAndMaterialDAO.findRodAndMaterialVos(rodAndMaterial);
 	}
 
 	/* (非 Javadoc) 

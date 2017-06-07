@@ -25,21 +25,36 @@ public class RodAndMaterialVo implements Serializable {
 	 * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么) 
 	*/ 
 	private static final long serialVersionUID = -665119607424528864L;
-	private Integer rodMaterialId;
+	private Integer rodAndMaterialId;
 	private RodForOtherVo rod;
 	private MaterialForOtherVo material;
 	private Integer materialNum;
 	private String reserve1;
 	private String reserve2;
 	private String reserve3;
-	public Integer getRodMaterialId() {
-		return rodMaterialId;
+	public Integer getRodAndMaterialId() {
+		return rodAndMaterialId;
 	}
-	public void setRodMaterialId(Integer rodMaterialId) {
-		this.rodMaterialId = rodMaterialId;
+	public void setRodAndMaterialId(Integer rodAndMaterialId) {
+		this.rodAndMaterialId = rodAndMaterialId;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public RodForOtherVo getRod() {
+		return rod;
+	}
+	public void setRod(RodForOtherVo rod) {
+		this.rod = rod;
+	}
+	public MaterialForOtherVo getMaterial() {
+		return material;
+	}
+	public void setMaterial(MaterialForOtherVo material) {
+		this.material = material;
+	}
+	public Integer getMaterialNum() {
+		return materialNum;
+	}
+	public void setMaterialNum(Integer materialNum) {
+		this.materialNum = materialNum;
 	}
 	public String getReserve1() {
 		return reserve1;
@@ -59,28 +74,13 @@ public class RodAndMaterialVo implements Serializable {
 	public void setReserve3(String reserve3) {
 		this.reserve3 = reserve3;
 	}
-	public Integer getMaterialNum() {
-		return materialNum;
-	}
-	public void setMaterialNum(Integer materialNum) {
-		this.materialNum = materialNum;
-	}
-	public RodForOtherVo getRod() {
-		return rod;
-	}
-	public void setRod(RodForOtherVo rod) {
-		this.rod = rod;
-	}
-	public MaterialForOtherVo getMaterial() {
-		return material;
-	}
-	public void setMaterial(MaterialForOtherVo material) {
-		this.material = material;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	@Override
 	public String toString() {
-		return "RodAndMaterialVo [rodMaterialId=" + rodMaterialId + ", rod="
-				+ rod + ", material=" + material + ", materialNum="
+		return "RodAndMaterialVo [rodAndMaterialId=" + rodAndMaterialId
+				+ ", rod=" + rod + ", material=" + material + ", materialNum="
 				+ materialNum + ", reserve1=" + reserve1 + ", reserve2="
 				+ reserve2 + ", reserve3=" + reserve3 + "]";
 	}

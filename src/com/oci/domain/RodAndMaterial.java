@@ -26,18 +26,18 @@ public class RodAndMaterial implements Serializable {
 	*/ 
 	private static final long serialVersionUID = -2397728018154844865L;
 
-	private Integer rodMaterialId;
+	private Integer rodAndMaterialId;
 	private Integer rodId;
 	private Integer materialId;
 	private Integer materialNum;
 	private String reserve1;
 	private String reserve2;
 	private String reserve3;
-	public Integer getRodMaterialId() {
-		return rodMaterialId;
+	public Integer getRodAndMaterialId() {
+		return rodAndMaterialId;
 	}
-	public void setRodMaterialId(Integer rodMaterialId) {
-		this.rodMaterialId = rodMaterialId;
+	public void setRodAndMaterialId(Integer rodAndMaterialId) {
+		this.rodAndMaterialId = rodAndMaterialId;
 	}
 	public Integer getRodId() {
 		return rodId;
@@ -75,13 +75,17 @@ public class RodAndMaterial implements Serializable {
 	public void setReserve3(String reserve3) {
 		this.reserve3 = reserve3;
 	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	@Override
 	public String toString() {
-		return "RodAndMaterial [rodMaterialId=" + rodMaterialId + ", rodId="
-				+ rodId + ", materialId=" + materialId + ", materialNum="
-				+ materialNum + ", reserve1=" + reserve1 + ", reserve2="
-				+ reserve2 + ", reserve3=" + reserve3 + "]";
+		return "RodAndMaterial [rodAndMaterialId=" + rodAndMaterialId
+				+ ", rodId=" + rodId + ", materialId=" + materialId
+				+ ", materialNum=" + materialNum + ", reserve1=" + reserve1
+				+ ", reserve2=" + reserve2 + ", reserve3=" + reserve3 + "]";
 	}
+
 
 
 }

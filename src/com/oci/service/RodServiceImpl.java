@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.oci.dao.RodDAO;
 import com.oci.domain.Rod;
 import com.oci.domain.searcher.RodSearcher;
+import com.oci.domain.vo.RodForOtherVo;
 import com.oci.domain.vo.RodVo;
 
 /** 
@@ -152,6 +153,18 @@ public class RodServiceImpl implements RodService {
 	public List<RodVo> findRodVos(RodSearcher rod) {
 		// TODO Auto-generated method stub
 		return rodDAO.findRodVos(rod);
+	}
+
+	/* (非 Javadoc) 
+	 * <p>Title: findAllRodForOtherVo</p> 
+	 * <p>Description: </p> 
+	 * @return 
+	 * @see com.oci.service.RodService#findAllRodForOtherVo() 
+	*/
+	@Override
+	public List<RodForOtherVo> findAllRodForOtherVo() {
+		// TODO Auto-generated method stub
+		return rodDAO.findAllRodForOtherVo();
 	}
 
 }

@@ -10,7 +10,6 @@
 package com.oci.service;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -20,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.oci.dao.RodAndProgressDAO;
 import com.oci.domain.RodAndProgress;
+import com.oci.domain.searcher.RodAndProgressSearcher;
 import com.oci.domain.vo.RodAndProgressVo;
 
 /** 
@@ -55,18 +55,6 @@ public class RodAndProgressServiceImpl implements RodAndProgressService {
 		return rodAndProgressDAO.findAllRodAndProgressVo();
 	}
 
-	/* (非 Javadoc) 
-	 * <p>Title: findRodAndProgresss</p> 
-	 * <p>Description: </p> 
-	 * @param map
-	 * @return 
-	 * @see com.oci.service.RodAndProgressService#findRodAndProgresss(java.util.Map) 
-	 */
-	@Override
-	public List<RodAndProgressVo> findRodAndProgresss(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return rodAndProgressDAO.findRodAndProgresss(map);
-	}
 
 	/* (非 Javadoc) 
 	 * <p>Title: findRodAndProgress</p> 
@@ -140,6 +128,20 @@ public class RodAndProgressServiceImpl implements RodAndProgressService {
 	public void deleteRodAndProgress(Integer rodAndProgressId) {
 		// TODO Auto-generated method stub
 		rodAndProgressDAO.deleteRodAndProgress(rodAndProgressId);
+	}
+
+	/* (非 Javadoc) 
+	 * <p>Title: findRodAndProgresss</p> 
+	 * <p>Description: </p> 
+	 * @param rodAndProgress
+	 * @return 
+	 * @see com.oci.service.RodAndProgressService#findRodAndProgresss(com.oci.domain.searcher.RodAndProgressSearcher) 
+	*/
+	@Override
+	public List<RodAndProgressVo> findRodAndProgressVos(
+			RodAndProgressSearcher rodAndProgress) {
+		// TODO Auto-generated method stub
+		return rodAndProgressDAO.findRodAndProgressVos(rodAndProgress);
 	}
 
 }

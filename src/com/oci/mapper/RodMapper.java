@@ -37,4 +37,6 @@ public interface RodMapper {
 	public void deleteRods(List<Integer> rodIds);
 	public void deleteRod(Integer rodId);
 	public void deleteRodsByIntervalId(Integer intervalId);
+
+	public List<RodForOtherVo> findAllRodForOtherVo();
 }

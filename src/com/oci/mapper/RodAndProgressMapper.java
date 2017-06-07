@@ -10,9 +10,9 @@
 package com.oci.mapper;
 
 import java.util.List;
-import java.util.Map;
 
 import com.oci.domain.RodAndProgress;
+import com.oci.domain.searcher.RodAndProgressSearcher;
 import com.oci.domain.vo.RodAndProgressVo;
 
 /** 
@@ -25,7 +25,7 @@ import com.oci.domain.vo.RodAndProgressVo;
  */
 public interface RodAndProgressMapper {
 	public List<RodAndProgressVo> findAllRodAndProgressVo();
-	public List<RodAndProgressVo> findRodAndProgresss(Map<String,Object> map);
+	public List<RodAndProgressVo> findRodAndProgressVos(RodAndProgressSearcher rodAndProgress);
 	public RodAndProgress findRodAndProgress(Integer rodAndProgressId);
 	public RodAndProgressVo findRodAndProgressVo(Integer rodAndProgressId);
 	
@@ -33,5 +33,9 @@ public interface RodAndProgressMapper {
 	public void insertRodAndProgress(RodAndProgress rodAndProgress);
 	public void deleteRodAndProgresss(List<Integer> rodAndProgressIds);
 	public void deleteRodAndProgress(Integer rodAndProgressId);
+	public void deleteRodAndProgresssByRodId(List<Integer> rodIds);
+	public void deleteRodAndProgressByRodId(Integer rodId);
+	public void deleteRodAndProgresssByProgressId(List<Integer> progressIds);
+	public void deleteRodAndProgressByProgressId(Integer progressId);
 	
 }

@@ -10,12 +10,12 @@
 package com.oci.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.oci.domain.RodAndMaterial;
+import com.oci.domain.searcher.RodAndMaterialSearcher;
 import com.oci.domain.vo.RodAndMaterialVo;
 import com.oci.mapper.RodAndMaterialMapper;
 
@@ -58,9 +58,9 @@ public class RodAndMaterialDAOImpl implements RodAndMaterialDAO {
 	 * @see com.oci.mapper.RodAndMaterialMapper#findRodAndMaterialVos(java.util.Map) 
 	 */
 	@Override
-	public List<RodAndMaterialVo> findRodAndMaterialVos(Map<String, Object> map) {
+	public List<RodAndMaterialVo> findRodAndMaterialVos(RodAndMaterialSearcher rodAndMaterial) {
 		// TODO Auto-generated method stub
-		return rodAndMaterialMapper.findRodAndMaterialVos(map);
+		return rodAndMaterialMapper.findRodAndMaterialVos(rodAndMaterial);
 	}
 
 	/* (非 Javadoc) 
@@ -135,6 +135,54 @@ public class RodAndMaterialDAOImpl implements RodAndMaterialDAO {
 	public void deleteRodAndMaterial(Integer rodMaterialId) {
 		// TODO Auto-generated method stub
 		rodAndMaterialMapper.deleteRodAndMaterial(rodMaterialId);
+	}
+
+	/* (非 Javadoc) 
+	 * <p>Title: deleteRodAndMaterialsByRodId</p> 
+	 * <p>Description: </p> 
+	 * @param rodIds 
+	 * @see com.oci.dao.RodAndMaterialDAO#deleteRodAndMaterialsByRodId(java.util.List) 
+	*/
+	@Override
+	public void deleteRodAndMaterialsByRodId(List<Integer> rodIds) {
+		// TODO Auto-generated method stub
+		rodAndMaterialMapper.deleteRodAndMaterialsByRodId(rodIds);
+	}
+
+	/* (非 Javadoc) 
+	 * <p>Title: deleteRodAndMaterialByRodId</p> 
+	 * <p>Description: </p> 
+	 * @param rodId 
+	 * @see com.oci.dao.RodAndMaterialDAO#deleteRodAndMaterialByRodId(java.lang.Integer) 
+	*/
+	@Override
+	public void deleteRodAndMaterialByRodId(Integer rodId) {
+		// TODO Auto-generated method stub
+		rodAndMaterialMapper.deleteRodAndMaterialByRodId(rodId);
+	}
+
+	/* (非 Javadoc) 
+	 * <p>Title: deleteRodAndMaterialsByMaterial</p> 
+	 * <p>Description: </p> 
+	 * @param materialIds 
+	 * @see com.oci.dao.RodAndMaterialDAO#deleteRodAndMaterialsByMaterial(java.util.List) 
+	*/
+	@Override
+	public void deleteRodAndMaterialsByMaterial(List<Integer> materialIds) {
+		// TODO Auto-generated method stub
+		rodAndMaterialMapper.deleteRodAndMaterialsByMaterial(materialIds);
+	}
+
+	/* (非 Javadoc) 
+	 * <p>Title: deleteRodAndMaterialByMaterial</p> 
+	 * <p>Description: </p> 
+	 * @param materialId 
+	 * @see com.oci.dao.RodAndMaterialDAO#deleteRodAndMaterialByMaterial(java.lang.Integer) 
+	*/
+	@Override
+	public void deleteRodAndMaterialByMaterial(Integer materialId) {
+		// TODO Auto-generated method stub
+		rodAndMaterialMapper.deleteRodAndMaterialByMaterial(materialId);
 	}
 
 }
